@@ -41,23 +41,6 @@ jobs:
           public_ids: |
             rvr-ai5-jwz 
 
-  medico:
-    needs: build
-    runs-on: ubuntu-latest
-
-    steps:
-      - name: Checkout code
-        uses: actions/checkout@v3
-
-      - name: Run Datadog Synthetic Tests
-        uses: DataDog/synthetics-ci-github-action@v2.0.0
-        with:
-          api_key: ${{ secrets.DD_API_KEY }}
-          app_key: ${{ secrets.DD_APP_KEY }}
-          datadog_site: "us5.datadoghq.com"
-          public_ids: |
-            mfh-mxc-59t
-
   butterfly:
     needs: build
     runs-on: ubuntu-latest
@@ -74,6 +57,23 @@ jobs:
           datadog_site: "us5.datadoghq.com"
           public_ids: |
             dss-kks-zzs
+            
+  medico:
+    needs: build
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Run Datadog Synthetic Tests
+        uses: DataDog/synthetics-ci-github-action@v2.0.0
+        with:
+          api_key: ${{ secrets.DD_API_KEY }}
+          app_key: ${{ secrets.DD_APP_KEY }}
+          datadog_site: "us5.datadoghq.com"
+          public_ids: |
+            mfh-mxc-59t
 
   resume:
     needs: build
