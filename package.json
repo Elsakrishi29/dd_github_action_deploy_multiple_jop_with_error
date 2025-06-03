@@ -1,0 +1,23 @@
+{
+  "name": "datadog-github-actions-deploy",
+  "version": "1.0.0",
+  "description": "datadog github actions deploy test",
+  "main": "index.js",
+  "directories": {
+    "test": "tests"
+  },
+  "scripts": {
+    "test": "jest"
+  },
+  "author": "Krishnaveni",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^5.1.0"
+  },
+  "devDependencies": {
+    "@datadog/datadog-ci": "^3.6.1",
+    "jest": "^29.7.0",
+    "jest-junit": "^16.0.0",
+    "supertest": "^7.1.1"
+  }
+}
