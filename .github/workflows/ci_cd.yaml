@@ -40,7 +40,6 @@ jobs:
           datadog_site: "us5.datadoghq.com"
           public_ids: |
             jxf-qps-yzi 
-          # fail_on_critical_errors: true
 
   butterfly:
     needs: build
@@ -58,7 +57,6 @@ jobs:
           datadog_site: "us5.datadoghq.com"
           public_ids: |
             dzm-ruw-gn8
-          # fail_on_critical_errors: true
 
   medicio:
     needs: build
@@ -76,7 +74,6 @@ jobs:
           datadog_site: "us5.datadoghq.com"
           public_ids: |
             8ke-nar-mmc
-          # fail_on_critical_errors: true
 
   resume:
     needs: build
@@ -94,7 +91,6 @@ jobs:
           datadog_site: "us5.datadoghq.com"
           public_ids: |
             b2w-99e-7em
-          # fail_on_critical_errors: true
 
   httpbin:
     needs: build
@@ -112,4 +108,3 @@ jobs:
           datadog_site: "us5.datadoghq.com"
           public_ids: |
             ugn-z68-iad
-          # fail_on_critical_errors: true
