@@ -96,7 +96,7 @@ jobs:
             b2w-99e-7em
           fail_on_critical_errors: true
 
-  resume:
+  tax:
     needs: build
     runs-on: ubuntu-latest
 
