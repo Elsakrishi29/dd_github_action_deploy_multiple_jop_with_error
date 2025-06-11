@@ -96,7 +96,7 @@ jobs:
             b2w-99e-7em
           # fail_on_critical_errors: true
 
-  tax:
+  httpbin:
     needs: build
     runs-on: ubuntu-latest
 
@@ -111,5 +111,5 @@ jobs:
           app_key: ${{ secrets.DD_APP_KEY }}
           datadog_site: "us5.datadoghq.com"
           public_ids: |
-            69q-q6g-brz
+            ugn-z68-iad
           # fail_on_critical_errors: true
