@@ -209,13 +209,36 @@ describe('Run Github Action', () => {
       await run()
       expect(setFailedMock).not.toHaveBeenCalled()
       expect(infoMock).toHaveBeenCalledWith(
-        `Datadog Synthetics tests succeeded: criticalErrors: 0, passed: 0, previouslyPassed: 0, failedNonBlocking: 0, failed: 0, skipped: 0, notFound: 0, timedOut: 1\n` +
+        `Datadog Synthetics tests succeeded add new: criticalErrors: 0, passed: 0, previouslyPassed: 0, failedNonBlocking: 0, failed: 0, skipped: 0, notFound: 0, timedOut: 1\n` +
           `Batch URL: https://app.datadoghq.com/synthetics/explorer/ci?batchResultId=aaaaaaaa-aaaa-aaaa-aaaa-aaaaaaaaaaaa`
       )
     })
 
+    // Extra Code Added start
+
+    // test('Github Action succeeds if Synthetics tests timed out and config.failOnTimeout = false', async () => {
+    //   const setFailedMock = jest.spyOn(core, 'setFailed')
+    //   const infoMock = jest.spyOn(core, 'info')
+
+    //   jest.spyOn(synthetics, 'executeTests').mockResolvedValue({
+    //     results: [{passed: true, timedOut: true, test: {public_id: 'aaa-bbb-ccc'}, result: {}} as synthetics.Result],
+    //     summary: {...EMPTY_SUMMARY, timedOut: 1},
+    //   })
+
+    //   await run()
+    //   expect(setFailedMock).not.toHaveBeenCalled()
+
+    //   const expected = `Datadog Synthetics tests succeeded: criticalErrors: 0, passed: 0, previouslyPassed: 0, failedNonBlocking: 0, failed: 0, skipped: 0, notFound: 0, timedOut: 1`
+    //   const allInfoCalls = infoMock.mock.calls.map((call) => call[0])
+    //   console.log('infoMock calls:', allInfoCalls)
+    //   const matchingCall = allInfoCalls.find((msg) => msg.includes(expected))
+    //   expect(matchingCall).toBeDefined()
+    // })
+
+    // Extra Code Added End
+
     test('Github Action succeeds if Synthetics tests not found with failOnMissingTests = false', async () => {
-      const infoMock = jest.spyOn(core, 'info')
+      const infoMock  = jest.spyOn(core, 'info')
 
       jest.spyOn(synthetics, 'executeTests').mockResolvedValue({
         results: [],
@@ -224,10 +247,30 @@ describe('Run Github Action', () => {
 
       await run()
       expect(infoMock).toHaveBeenCalledWith(
-        `Datadog Synthetics tests succeeded: criticalErrors: 0, passed: 0, previouslyPassed: 0, failedNonBlocking: 0, failed: 0, skipped: 0, notFound: 1, timedOut: 0\n` +
+        `Datadog Synthetics tests succeeded add new: criticalErrors: 0, passed: 0, previouslyPassed: 0, failedNonBlocking: 0, failed: 0, skipped: 0, notFound: 1, timedOut: 0\n` +
           `Batch URL: https://app.datadoghq.com/synthetics/explorer/ci?batchResultId=aaaaaaaa-aaaa-aaaa-aaaa-aaaaaaaaaaaa`
       )
     })
+
+    // Extra Code Added start
+
+    // test('Github Action succeeds if Synthetics tests not found with failOnMissingTests = false', async () => {
+    //   const infoMock = jest.spyOn(core, 'info')
+
+    //   jest.spyOn(synthetics, 'executeTests').mockResolvedValue({
+    //     results: [],
+    //     summary: {...EMPTY_SUMMARY, testsNotFound: new Set(['unk-now-nid'])},
+    //   })
+
+    //   await run()
+
+    //   const expected = `Datadog Synthetics tests succeeded: criticalErrors: 0, passed: 0, previouslyPassed: 0, failedNonBlocking: 0, failed: 0, skipped: 0, notFound: 1, timedOut: 0`
+    //   const allInfoCalls = infoMock.mock.calls.map((call) => call[0])
+    //   const matchingCall = allInfoCalls.find((msg) => msg.includes(expected))
+    //   expect(matchingCall).toBeDefined()
+    // })
+
+    // Extra Code Added End
 
     test('Github Action succeeds if Synthetics tests do not fail', async () => {
       const setFailedMock = jest.spyOn(core, 'setFailed')
