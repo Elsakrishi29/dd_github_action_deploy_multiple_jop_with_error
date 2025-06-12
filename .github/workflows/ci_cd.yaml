@@ -41,4 +41,3 @@ jobs:
           datadog-site: "us5.datadoghq.com"
           public-ids: |
             jxf-qps-yzi
-            dzm-ruw-gn8

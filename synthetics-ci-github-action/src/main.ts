@@ -11,6 +11,11 @@ const run = async (): Promise<void> => {
 
   try {
     const {results, summary} = await synthetics.executeTests(reporter, config)
+
+    console.log(`DD CI Batch ID - 1 : ${summary.batchId}`)
+    console.log(`Results Payload - 1 :\n${JSON.stringify(results, null, 2)}`)
+    console.log(`Summary Payload - 1 :\n${JSON.stringify(summary, null, 2)}`)
+    
     const orgSettings = await synthetics.utils.getOrgSettings(reporter, config)
 
     synthetics.utils.renderResults({
@@ -21,11 +26,6 @@ const run = async (): Promise<void> => {
       startTime,
       summary,
     })
-
-    console.log(`DD CI Batch ID - 1 : ${summary.batchId}`)
-    console.log(`Results Payload - 1 :\n${JSON.stringify(results, null, 2)}`)
-    console.log(`Summary Payload - 1 :\n${JSON.stringify(summary, null, 2)}`)
-
 
     synthetics.utils.reportExitLogs(reporter, config, {results})
 
