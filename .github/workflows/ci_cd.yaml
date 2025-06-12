@@ -39,9 +39,9 @@ jobs:
           public_ids: |
             jxf-qps-yzi
             dzm-ruw-gn8
+            c3h-bzk-tbp
             b2w-99e-7em
             7kq-qnx-xht 
-            c3h-bzk-tbp
 
   hello-world:
     name: Run Hello World
