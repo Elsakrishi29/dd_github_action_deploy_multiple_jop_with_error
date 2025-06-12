@@ -28,29 +28,18 @@ jobs:
     name: Run Datadog Synthetic Tests
     needs: build
     runs-on: ubuntu-latest
-
-    steps:
-      - name: Run Datadog Synthetic Tests
-        uses: DataDog/synthetics-ci-github-action@v2.0.0
-        with:
-          api_key: ${{ secrets.DD_API_KEY }}
-          app_key: ${{ secrets.DD_APP_KEY }}
-          datadog_site: "us5.datadoghq.com"
-          public_ids: |
-            jxf-qps-yzi
-            dzm-ruw-gn8
-            c3h-bzk-tbp
-            b2w-99e-7em
-            7kq-qnx-xht 
-
-  hello-world:
-    name: Run Hello World
-    needs: synthetic-tests
-    runs-on: ubuntu-latest
+    env:
+      ACTIONS_STEP_DEBUG: true
 
     steps:
       - name: Checkout code
         uses: actions/checkout@v3
 
-      - name: Say Hello
-        run: echo "Hello, world! CI/CD completed successfully."
+      - name: Run Datadog Synthetic Tests
+        uses: ./synthetics-ci-github-action
+        with:
+          api-key: ${{ secrets.DD_API_KEY }}
+          app-key: ${{ secrets.DD_APP_KEY }}
+          datadog-site: "us5.datadoghq.com"
+          public-ids: |
+            jxf-qps-yzi
