@@ -36,10 +36,10 @@ jobs:
       - name: Run Datadog Synthetic Tests
         uses: ./synthetics-ci-github-action
         with:
-          api_key: ${{ secrets.DD_API_KEY }}
-          app_key: ${{ secrets.DD_APP_KEY }}
-          datadog_site: "us5.datadoghq.com"
-          public_ids: |
+          api-key: ${{ secrets.DD_API_KEY }}
+          app-key: ${{ secrets.DD_APP_KEY }}
+          datadog-site: "us5.datadoghq.com"
+          public-ids: |
             jxf-qps-yzi
             dzm-ruw-gn8
             b2w-99e-7em
