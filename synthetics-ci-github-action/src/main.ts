@@ -12,10 +12,12 @@ const run = async (): Promise<void> => {
   try {
     const {results, summary} = await synthetics.executeTests(reporter, config)
 
-    console.log(`DD CI Batch ID - 1 : ${summary.batchId}`)
-    console.log(`Results Payload - 1 :\n${JSON.stringify(results, null, 2)}`)
-    console.log(`Summary Payload - 1 :\n${JSON.stringify(summary, null, 2)}`)
-    
+    core.startGroup('DD CI Batch Payload')
+    core.info(`DD CI Batch ID: ${summary.batchId}`)
+    core.info(`Results Payload:\n${JSON.stringify(results, null, 2)}`)
+    core.info(`Summary Payload:\n${JSON.stringify(summary, null, 2)}`)
+    core.endGroup()
+
     const orgSettings = await synthetics.utils.getOrgSettings(reporter, config)
 
     synthetics.utils.renderResults({
