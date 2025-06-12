@@ -1,0 +1,44 @@
+name: Run E2E Synthetic tests
+
+on: push
+
+jobs:
+  e2e:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 'lts/*'
+          cache: yarn
+      - name: Build
+        run: |
+          yarn install --immutable
+          yarn build
+          yarn package
+      - name: Run E2E Synthetic tests
+        uses: ./
+        id: run-synthetics-tests
+        env:
+          FORCE_COLOR: 1
+        with:
+          api-key: ${{ secrets.datadog_api_key }}
+          app-key: ${{ secrets.datadog_app_key }}
+          config-path: './.github/workflows/e2e/global.config.json'
+          public-ids: |
+            pwd-mwg-3p5
+            2r9-q7u-4nn
+      - name: Example of using outputs
+        run: |
+          echo 'Batch URL: ${{ steps.run-synthetics-tests.outputs.batch-url }}'
+          echo 'Raw Results:'
+          echo '${{ steps.run-synthetics-tests.outputs.raw-results }}' | jq '.'
+      - name: Example of parsing and using raw results with JS
+        uses: actions/github-script@v6
+        env:
+          RAW_RESULTS: ${{ steps.run-synthetics-tests.outputs.raw-results }}
+        with:
+          script: |
+            const rawResults = JSON.parse(process.env.RAW_RESULTS);
+            console.log('Parsed Raw Results:', rawResults);
