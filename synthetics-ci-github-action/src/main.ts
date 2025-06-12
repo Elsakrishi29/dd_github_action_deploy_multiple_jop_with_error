@@ -22,15 +22,12 @@ const run = async (): Promise<void> => {
       summary,
     })
 
-    core.info(`DD CI Batch ID - 1 : ${summary.batchId}`)
-    core.info(`Results Payload - 1 :\n${JSON.stringify(results, null, 2)}`)
-    core.info(`Summary Payload - 1 :\n${JSON.stringify(summary, null, 2)}`)
+    console.log(`DD CI Batch ID - 1 : ${summary.batchId}`)
+    console.log(`Results Payload - 1 :\n${JSON.stringify(results, null, 2)}`)
+    console.log(`Summary Payload - 1 :\n${JSON.stringify(summary, null, 2)}`)
+
 
     synthetics.utils.reportExitLogs(reporter, config, {results})
-
-    core.info(`DD CI Batch ID - 2 : ${summary.batchId}`)
-    core.info(`Results Payload - 2 :\n${JSON.stringify(results, null, 2)}`)
-    core.info(`Summary Payload - 2 :\n${JSON.stringify(summary, null, 2)}`)
 
     const baseUrl = synthetics.utils.getAppBaseURL(config)
     const batchUrl = synthetics.utils.getBatchUrl(baseUrl, summary.batchId)
