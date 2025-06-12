@@ -42,7 +42,7 @@ const run = async (): Promise<void> => {
     if (exitReason !== 'passed') {
       core.setFailed(`Datadog Synthetics tests failed: ${getTextSummary(summary, batchUrl)}`)
     } else {
-      core.info(`Datadog Synthetics tests succeeded add new: ${getTextSummary(summary, batchUrl)}`)
+      core.info(`Datadog Synthetics tests succeeded add new one: ${getTextSummary(summary, batchUrl)}`)
     }
   } catch (error) {
     synthetics.utils.reportExitLogs(reporter, config, {error})
