@@ -11,15 +11,6 @@ const run = async (): Promise<void> => {
 
   try {
     const {results, summary} = await synthetics.executeTests(reporter, config)
-
-    core.info(`Type of summary: ${typeof summary}`)
-    core.info(`Type of results: ${typeof results}`)
-
-    console.log("🧪 Raw results:", results)
-    console.log("🧪 Raw summary:", summary)
-
-    core.info(`Results Payload:\n${JSON.stringify(results.slice(0, 5), null, 2)}`)
-
     const orgSettings = await synthetics.utils.getOrgSettings(reporter, config)
 
     synthetics.utils.renderResults({
@@ -42,7 +33,7 @@ const run = async (): Promise<void> => {
     if (exitReason !== 'passed') {
       core.setFailed(`Datadog Synthetics tests failed: ${getTextSummary(summary, batchUrl)}`)
     } else {
-      core.info(`Datadog Synthetics tests succeeded add new print: ${getTextSummary(summary, batchUrl)}`)
+      core.info(`Datadog Synthetics tests succeeded: ${getTextSummary(summary, batchUrl)}`)
     }
   } catch (error) {
     synthetics.utils.reportExitLogs(reporter, config, {error})
