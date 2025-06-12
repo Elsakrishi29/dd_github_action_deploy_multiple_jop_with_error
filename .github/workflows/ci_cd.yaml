@@ -39,59 +39,6 @@ jobs:
           public_ids: |
             jxf-qps-yzi
             dzm-ruw-gn8
-<<<<<<< HEAD
-
-  medicio:
-    needs: build
-    runs-on: ubuntu-latest
-
-    steps:
-      - name: Checkout code
-        uses: actions/checkout@v3
-
-      - name: Run Datadog Synthetic Tests
-        uses: DataDog/synthetics-ci-github-action@v2.0.0
-        with:
-          api_key: ${{ secrets.DD_API_KEY }}
-          app_key: ${{ secrets.DD_APP_KEY }}
-          datadog_site: "us5.datadoghq.com"
-          public_ids: |
-            7kq-qnx-xht
-
-  resume:
-    needs: build
-    runs-on: ubuntu-latest
-
-    steps:
-      - name: Checkout code
-        uses: actions/checkout@v3
-
-      - name: Run Datadog Synthetic Tests
-        uses: DataDog/synthetics-ci-github-action@v2.0.0
-        with:
-          api_key: ${{ secrets.DD_API_KEY }}
-          app_key: ${{ secrets.DD_APP_KEY }}
-          datadog_site: "us5.datadoghq.com"
-          public_ids: |
-            b2w-99e-7em
-
-  httpbin:
-    needs: build
-    runs-on: ubuntu-latest
-
-    steps:
-      - name: Checkout code
-        uses: actions/checkout@v3
-
-      - name: Run Datadog Synthetic Tests
-        uses: DataDog/synthetics-ci-github-action@v2.0.0
-        with:
-          api_key: ${{ secrets.DD_API_KEY }}
-          app_key: ${{ secrets.DD_APP_KEY }}
-          datadog_site: "us5.datadoghq.com"
-          public_ids: |
-            ugn-z68-iad
-=======
             b2w-99e-7em
             7kq-qnx-xht 
             c3h-bzk-tbp
@@ -100,4 +47,3 @@ jobs:
             4es-233-jfn
             dqy-vm6-dbk
             u6p-pga-2s2
->>>>>>> 77be9c5 (Update Yaml file)
