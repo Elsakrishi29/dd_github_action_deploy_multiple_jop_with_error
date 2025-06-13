@@ -42,4 +42,4 @@ jobs:
           app-key: ${{ secrets.DD_APP_KEY }}
           datadog-site: "us5.datadoghq.com"
           public-ids: |
-            jxf-qps-yzi
+            dqy-vm6-dbk
